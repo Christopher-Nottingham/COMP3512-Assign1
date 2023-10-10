@@ -13,18 +13,23 @@ require_once('helperfiles.php');
 <h1>Database Tester (PDO)</h1>
 <?php
 
-$data1 = getArtist();
-$data2 = getGenere();
+// $data1 = getArtist();
+// $data2 = getGenere();
 
-foreach ($data1 as $row) {
-        echo $row['artist_name'] . "<br/>";
-        } 
-        foreach ($data2 as $row) {
-            echo $row['genre_name'] . "<br/>";
-            } 
+$song = getAllSongsFromGenereLike("canadian hip hop");
+
+print_r ($song);
+
+// foreach ($data1 as $row) {
+//         echo $row['artist_name'] . "<br/>";
+        // } 
+        // foreach ($data2 as $row) {
+        //     echo $row['genre_name'] . "<br/>";
+        //     } 
 
 
 
 ?>
+
 </body>
 </html>
