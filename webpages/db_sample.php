@@ -16,7 +16,8 @@ require_once('helperfiles.php');
 // $data1 = getArtist();
 // $data2 = getGenere();
 
-$song = getAllSongsFromGenereLike("canadian hip hop");
+$song = getAllSongsFromYearsGreaterThan(2017);
+
 
 print_r ($song);
 
