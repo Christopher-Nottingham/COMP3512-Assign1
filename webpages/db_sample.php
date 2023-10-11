@@ -12,14 +12,20 @@ require_once('helperfiles.php');
 <body>
 <h1>Database Tester (PDO)</h1>
 <?php
-
+// session_start();
 // $data1 = getArtist();
 // $data2 = getGenere();
 
-$song = getAllSongsFromYearsGreaterThan(2017);
+// $song = getAllSongsFromYearsGreaterThan(2017);
 
 
-print_r ($song);
+// $fav = AddToFave("1003");
+
+
+// print_r($_SESSION);
+
+
+// print_r ($song);
 
 // foreach ($data1 as $row) {
 //         echo $row['artist_name'] . "<br/>";
@@ -31,6 +37,9 @@ print_r ($song);
 
 
 ?>
+
+
+
 
 </body>
 </html>

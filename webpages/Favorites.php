@@ -19,5 +19,19 @@ require_once('helperfiles.php');
         <a href="./Browse-Search-Results.php">Browse/Search Results</a>
     <a href="./Search.php">Search</a>    
     </nav></header>
+
+<!-- Link to remove All -->
+<!-- echo "<a href='./removeAll.php'>Remove All</a>" -->
+
+
+<!-- Link to remove a song -->
+<!-- echo "<a href='removeFrom.php?'".$row['song_id']."'></a>"; -->
+ <!-- Link to view  -->
+ <!-- echo "<td><a href='SingleSong.php?song_id=".$row['song_id']."'>Click Me</a></td>"; -->
+
+    <br>
+    <?php 
+
+    ?>
     </body>
 </html>

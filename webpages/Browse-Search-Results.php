@@ -17,7 +17,8 @@ require_once('helperfiles.php');
     </nav>
 </header>
 <form action="Browse-Search-Results.php" method="get">
-<input type="submit" value="Show All">
+
+<input type="submit" value="Show All" name="clicked"  >
 </form>
 
 <table>
