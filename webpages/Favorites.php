@@ -15,7 +15,7 @@ function removeFromFavorites($songId) {
 }
 
 // Function to clear all favorites
-function clearFavorites() {
+if (isset($_GET['clear'])) {
     $_SESSION['favorite_songs'] = array();
 }
 
@@ -44,10 +44,7 @@ if (isset($_GET['remove'])) {
     removeFromFavorites($songToRemove);
 }
 
-// Check if all favorites should be cleared
-if (isset($_GET['clear'])) {
-    clearFavorites();
-}
+
 
 ?>
 
