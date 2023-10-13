@@ -46,7 +46,7 @@ function printHeader (){
    echo "</header>";
 }
 function printFooter(){
-    echo "<footer>  COMP 3512 -001 | &copy <a href='https://github.com/Christopher-Nottingham'>Christopher Nottingham</a> and <a href='https://github.com/ObaydaD'>Obayda Daoud</a> | </footer> ";
+    echo "<footer class='footer' id = 'text'>COMP 3512 -001 | &copy <a href='https://github.com/Christopher-Nottingham'>&nbsp;Christopher Nottingham&nbsp;</a>  and  <a href='https://github.com/ObaydaD'> &nbsp;Obayda Daoud&nbsp; </a> |  <a href='https://github.com/Christopher-Nottingham/COMP3512-Assign1'>&nbsp;GitHub Repo&nbsp;</a></footer>";
 }
 
 function getSongs()

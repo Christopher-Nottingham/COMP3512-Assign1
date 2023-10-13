@@ -3,16 +3,29 @@ require_once('config.inc.php');
 require_once('helperfiles.php');
 ?>
 <html>
-    <head>
-       <title>About Us</title>
-       <link rel="stylesheet" href="../styling_files/style.css">
-    </head>
-    <body>
-        <?php printHeader();?>
+<head>
+
+<title>Search Page</title>
+<link rel="stylesheet" href="../styling_files/style.css">
+</head>
+<body>
+<div class="header"><nav class="navigation">
+  <a id="white" href="./Home.php">Home</a>
+  <a id="white" href="./SingleSong.php">Single Song</a>
+  <a id="white" href="./Favorites.php">Favorites</a>    
+  <a id="white" href="./Browse-Search-Results.php">Browse/Search Results</a>
+<a id="white" href="./Search.php">Search</a>    
+<a  id="white" href="./aboutus.php">About Us</a>
+</nav></div>
+       
+
+        <div class="section">
 
     This assignment submission was made for COMP 3512 -- 001.
 
 
+<br>
+<br>
         The tech used for making the website was:
         <ul>
             <li>XXAMP to provide website and database hosting</li>
@@ -27,7 +40,7 @@ require_once('helperfiles.php');
     </ul>
 
     The project repository can be found here <a href="http://"></a>
-        
+        </div>
 <?php printFooter();?>
     </body>
 </html>

@@ -51,44 +51,57 @@ if (isset($_GET['remove'])) {
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="../styling_files/style.css">
     <title>View Favorites</title>
 </head>
 <body>
-    <h2>View Favorites</h2>
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Artist</th>
-            <th>Year</th>
-            <th>Genre</th>
-            <th>Popularity</th>
-            <th>Actions</th>
-        </tr>
+<div class="header"><nav class="navigation">
+        <a id="white" href="./Home.php">Home</a>
+        <a id="white" href="./SingleSong.php">Single Song</a>
+        <a id="white" href="./Favorites.php">Favorites</a>    
+        <a id="white" href="./Browse-Search-Results.php">Browse/Search Results</a>
+    <a id="white" href="./Search.php">Search</a>    
+    <a  id="white" href="./aboutus.php">About Us</a>
+    </nav></div>
 
-        <?php
-        // Display each song in the favorites list
-        foreach ($_SESSION['favorite_songs'] as $songId) {
-            $songDetails = getSongDetails($songId);
+    <div class="section">
+        <h2>View Favorites</h2>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Year</th>
+                <th>Genre</th>
+                <th>Popularity</th>
+                <th>Actions</th>
+            </tr>
 
-            echo "<tr>";
-            echo "<td>" . substr($songDetails['title'], 0, 25);
-            if (strlen($songDetails['title']) > 25) {
-                echo "&hellip;";
+            <?php
+            // Display each song in the favorites list
+            foreach ($_SESSION['favorite_songs'] as $songId) {
+                $songDetails = getSongDetails($songId);
+
+                echo "<tr>";
+                echo "<td>" . substr($songDetails['title'], 0, 25);
+                if (strlen($songDetails['title']) > 25) {
+                    echo "&hellip;";
+                }
+                echo "</td>";
+                echo "<td>" . $songDetails['artist_name'] . "</td>";
+                echo "<td>" . $songDetails['year'] . "</td>";
+                echo "<td>" . $songDetails['genre_name'] . "</td>";
+                echo "<td>" . $songDetails['popularity'] . "</td>";
+                echo "<td><a href='ViewFavoritesPage.php?remove=$songId'>Remove</a></td>";
+                echo "</tr>";
             }
-            echo "</td>";
-            echo "<td>" . $songDetails['artist_name'] . "</td>";
-            echo "<td>" . $songDetails['year'] . "</td>";
-            echo "<td>" . $songDetails['genre_name'] . "</td>";
-            echo "<td>" . $songDetails['popularity'] . "</td>";
-            echo "<td><a href='ViewFavoritesPage.php?remove=$songId'>Remove</a></td>";
-            echo "</tr>";
-        }
+            ?>
+
+         </table>
+         <br><a id="altText" href='ViewFavoritesPage.php?clear=1'>Remove All</a>
+        <?php 
+        printFooter();
         ?>
+    </div>
 
-    </table>
-
-    <br>
-
-    <a href='ViewFavoritesPage.php?clear=1'>Remove All</a>
 </body>
 </html>

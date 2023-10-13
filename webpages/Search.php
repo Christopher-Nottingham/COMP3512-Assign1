@@ -4,20 +4,22 @@ require_once "helperfiles.php";
 ?>
 <html>
     <head>
+
       <title>Search Page</title>
-      <style>
-        
-      </style>
+      <link rel="stylesheet" href="../styling_files/style.css">
     </head>
     <body>
-    <header><nav>
-        <a href="./Home.php">Home</a>
-        <a href="./SingleSong.php">Single Song</a>
-        <a href="./Favorites.php">Favorites</a>    
-        <a href="./Browse-Search-Results.php">Browse/Search Results</a>
-    <a href="./Search.php">Search</a>    
-    </nav></header>
+    <div class="header"><nav class="navigation">
+        <a id="white" href="./Home.php">Home</a>
+        <a id="white" href="./SingleSong.php">Single Song</a>
+        <a id="white" href="./Favorites.php">Favorites</a>    
+        <a id="white" href="./Browse-Search-Results.php">Browse/Search Results</a>
+    <a id="white" href="./Search.php">Search</a>    
+    <a  id="white" href="./aboutus.php">About Us</a>
+    </nav></div>
     
+
+    <div class="section"> 
     
     <form action="./Browse-Search-Results.php" method="get">
 
@@ -57,12 +59,7 @@ require_once "helperfiles.php";
                         "</option>";
         }
         ?> </select>
-        
-        
-        
-        
-        
-        
+
        
         <input type="radio" name="search_type" value="Year">Year</input>
         
@@ -71,58 +68,7 @@ require_once "helperfiles.php";
         <input type="radio" id = "year_greater" name="year_type" value="year_greater">Greater</input>
         <input type="text" name="year_greater" id="year_greater"></input>
 
- <!-- <input type="text" name="" id="">
-
-
-
-
-<input type="radio" id="title" name="search" value="title">Title</input>
-
-<input type="text" name="title" id="title"> </input>
-<br>
-  <input type="radio" id="artist" name="search" value="artist">Artist</input>
- <label for="artistName"></label> -->
-<!-- <select name="artistName" id="artist">
-  // 
-//    $listOfArtists = getArtist();
-//    foreach ($listOfArtists as $row) {
-//        echo "<option value='" .
-//            $row["artist_name"] .
-//            "'>" .
-//            $row["artist_name"] .
-//            "</option>";
-//    }
-//    ?> </select>
-   <br> -->
-
-<!-- <input type = "radio" id="year" name = "search" value ="year">Year</input>
-
-<input type = "radio" id="year" name = "year" value ="year_less">Less</input>
-
-<label type="text" for="year_less"></label>
-
-<input type="text" name="year" id="year_greater"> Greater </input>
-
-<label type="text" for="year_greater" name  = "year_greater" id = "year_greater" ></label> -->
-
-
-<!-- <input type = "radio" id="year" name = "search" value ="Greater"> Less </input> -->
-<!-- <input type="text" name="g" id="">  </input> -->
-<!-- <br>
-  <input type="radio" id="genere" name="search" value="genereChosen"> Genere </input>
-<label for="genere"></label>
-<select name="genere" id="genere">
-
-//    $listOfGeneres = getGenere();
-//    foreach ($listOfGeneres as $row) {
-//        echo "<option value='" .
-//            $row["genre_name"] .
-//            "'>" .
-//            $row["genre_name"] .
-//            "</option>";
-//    }
-   ?> -->
- <!-- </select>  -->
+ 
 
 <br>
 <input type="submit" value="Search">
@@ -139,7 +85,12 @@ require_once "helperfiles.php";
 
         <fieldset>
     </form>
-
+    </div>
+    <?php 
+    
+    printFooter();
+    
+    ?>
 
     </body>
 </html>

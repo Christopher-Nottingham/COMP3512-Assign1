@@ -5,52 +5,50 @@ require_once('helperfiles.php');
 
 <head>
 <title>Single Song</title>
-<link rel="stylesheet" href="../styling_files/general_styling.css">
+<link rel="stylesheet" href="../styling_files/style.css">
 </head>
 
 <body>
    
 
     <body>
-    <header>
-        <nav>
-        <a href="./Home.php">Home</a>
-        <a href="./SingleSong.php">Single Song</a>
-        <a href="./Favorites.php">Favorites</a>    
-        <a href="./Browse-Search-Results.php">Browse/Search Results</a>
-    <a href="./Search.php">Search</a>    
-    </nav>
+    <div class="header"><nav class="navigation">
+        <a id="white" href="./Home.php">Home</a>
+        <a id="white" href="./SingleSong.php">Single Song</a>
+        <a id="white" href="./Favorites.php">Favorites</a>    
+        <a id="white" href="./Browse-Search-Results.php">Browse/Search Results</a>
+    <a id="white" href="./Search.php">Search</a>    
+    <a  id="white" href="./aboutus.php">About Us</a>
+    </nav></div>
 </header>
 
     <?php
-
+if (!empty($_GET)){
  $song = getArtist_From_Song_ID($_GET['song_id']);
-
-//print_r($song);
-
-    //    $songs = getSongs();
-
+} else {
+    $song = getArtist_From_Song_ID(1001);
+}
+ 
+     
+echo "<div class='section'>";
        foreach ($song as $row) {
-        echo $row['title']. "<br>";
-        echo $row['year']. "<br>";
-        echo $row['artist_name']. "<br>";
-        echo $row['genre_name']. "<br>"; 
-        echo $row['genre_id']. "<br>";
-        echo $row['duration']. "<br>";
-        echo $row['bpm']. "<br>";
-        echo $row['energy']. "<br>";
-        echo $row['danceability']. "<br>";
-        echo $row['liveness']. "<br>";
-        echo $row['valence']. "<br>";
-        echo $row['acousticness']. "<br>";
-        echo $row['speechiness']. "<br>";
-        echo $row['popularity']. "<br>";
-         //echo $row['title'] . ", " . $row['energy'] . ", " . $row['bpm'] . ", " . $row['danceablity'] . ", " . $row['liveness'] . ", " . $row['valence'] . ", " . $row['acousticness'] . ", " . $row['speechiness'] . ", " . $row['popularity'] . "<br>";
-
-    //     //. ", " . $row['bpm'] ", " . $row['energy'] . ", " . $row['bpm'] ", " . $row['danceability']  
+        
+        echo "<center>The searched song: " .$row['title'].", " . $row['artist_name'] .", " . $row['genre_name'] .", " . $row['year'] .", " . gmdate("i:s", $row['duration']) . "</center>";
+echo "<br> Analysis Data:";
+echo"<ul>";
+        echo "<li><b>".$row['title']. "</b> has a bpm is: " .$row['bpm']. "</li>";
+        echo "<li><b>".$row['title']. "</b> has a energy factor of: ".$row['energy']. "</li>";
+        echo "<li><b>".$row['title']. "</b>  has a danceability factor of: ".$row['danceability']. "</li>";
+        echo "<li><b>".$row['title']. "</b>  has a liveness factor of: ".$row['liveness']. "</li>";
+        echo "<li><b>".$row['title']. "</b>  has a valence factor of: ".$row['valence']. "</li>";
+        echo "<li><b>".$row['title']. "</b>  has a acousticness factor of: ".$row['acousticness']. "</li>";
+        echo "<li><b>".$row['title']. "</b>  has a speechiness factor of: ".$row['speechiness']. "</li>";
+        echo "<li><b>".$row['title']. "</b>  has a populatriy factor of: ".$row['popularity']. "</li>";
+echo "</ul>";
         } 
 
-
+echo "</div>";
+printFooter();
 
 // Start the session to access the session variable
 session_start();
@@ -132,8 +130,9 @@ if (isset($_SESSION['studying_songs'])) {
         echo "<li>" . $song['title'] . "</li>";
     }
     echo "</ul>
-    </body>
-    </html>";
+    </body>";
+    
+   echo "</html>";
 } else {
     echo "No results found.";
 }
@@ -157,10 +156,12 @@ if (isset($_SESSION['top_genres'])) {
         echo "<li>" . $genre['genre_name'] . " (Songs: " . $genre['song_count'] . ")</li>";
     }
     echo "</ul>
-    </body>
-    </html>";
+    </body>";
+  
+   echo "</html>";
 } else {
     echo "No results found.";
+
 }
 
 
@@ -182,10 +183,12 @@ if (isset($_SESSION['popular_artists'])) {
         echo "<li>" . $artist['artist_name'] . " (Songs: " . $artist['song_count'] . ")</li>";
     }
     echo "</ul>
-    </body>
-    </html>";
+    </body>";
+    printFooter();
+   echo "</html>";
 } else {
     echo "No results found.";
+
 }
 
 
@@ -207,13 +210,11 @@ if (isset($_SESSION['one_hit_wonders'])) {
         echo "<li>" . $song['title'] . " by " . $song['artist_name'] . " (Popularity: " . $song['popularity'] . ")</li>";
     }
     echo "</ul>
-    </body>
-    </html>";
+    </body>";
+
+   echo "</html>";
 } else {
     echo "No results found.";
+
 }
 ?>
-
-       
-    </body>
-</body>
