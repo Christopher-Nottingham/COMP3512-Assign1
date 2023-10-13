@@ -34,7 +34,7 @@ require_once('helperfiles.php');
   
     <div class="item"><a href="./SecondPage.php?action=popularsongs">Most Popular Songs</a></div>
 
-<div class="item"><a href="./SingleSong.php">One Hit Wonders Songs</a></div>
+    <div class="item"><a href="./SecondPage.php?action=onehitwonders">One Hit Wonders Songs</a></div>
 
     <div class="item"><a href="./SecondPage.php">Longest Acoustic Songs</a></div>
 
@@ -48,3 +48,5 @@ require_once('helperfiles.php');
     <footer>WRITE A DESCRIPTION ABOUT THE ASSINGMENT OUR NAMES AND THE GIT LINK</footer>
     </body>
 </html>
+
+<a href=""></a>
