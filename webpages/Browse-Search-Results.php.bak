@@ -24,7 +24,7 @@ require_once('helperfiles.php');
 <input type="submit" value="Submit">
 </form>
 
-<input type="button" value="Show All"> 
+ <!-- <input type="button" value="Show All"> --> 
     <!-- <button type="button">Show All</button></form> -->
 <table>
     <tr>
