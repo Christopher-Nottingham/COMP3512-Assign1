@@ -32,6 +32,22 @@ function getGenre()
         die($e->getMessage());
     }
 }
+function printHeader (){
+   echo"<header>";
+   echo "<h1>COMP 3512</h1>"; 
+   echo "<h2>&copy Christopher Nottingham and Obayda Daoud</h2>";
+   echo "<nav";
+   echo "<a href='./Home.php'>Home</a>" ;
+   echo "<a href='./SingleSong.php'>Single Song</a>";
+   echo "<a href='./Favorites.php'>Favorites</a>";     
+   echo "<a href='./Browse-Search-Results.php'>Browse/Search Results</a>";
+   echo "<a href='./aboutus.php'>About Us</a>";
+   echo "</nav";
+   echo "</header>";
+}
+function printFooter(){
+    echo "<footer>  COMP 3512 -001 | &copy <a href='https://github.com/Christopher-Nottingham'>Christopher Nottingham</a> and <a href='https://github.com/ObaydaD'>Obayda Daoud</a> | </footer> ";
+}
 
 function getSongs()
 {
