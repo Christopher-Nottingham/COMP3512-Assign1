@@ -21,3 +21,30 @@ require_once('helperfiles.php');
     </nav></header>
     </body>
 </html>
+
+
+
+<input type="button" value="Show All"> 
+
+   <button type="button">remove All</button>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Artist Name</th>
+        <th>Year</th>
+        <th>Genere Name</th>
+        <th>Popularity Score</th>
+        <th>Add to Favorites</th>
+        <th>View</th>
+    </tr>
+    <tbody>
+        <?php
+        getSongBrowseSearchResults();
+        ?>
+    </tbody>
+   
+    <!-- <button type="submit"></button> -->
+<!-- </table> -->
+
+    </body>
+</html>

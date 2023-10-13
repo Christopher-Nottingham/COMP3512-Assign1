@@ -16,8 +16,16 @@ require_once('helperfiles.php');
     <a href="./Search.php">Search</a>    
     </nav>
 </header>
+<form action="Search.php" method="get">
 
+    <button type="button" onclick="location.href='SingleSong.php?song_id='">dsadsadsa</button>
 
+<input type="search" name="ShowAll" id="ShowAll">
+<input type="submit" value="Submit">
+</form>
+
+<input type="button" value="Show All"> 
+    <!-- <button type="button">Show All</button></form> -->
 <table>
     <tr>
         <th>Title</th>
@@ -33,7 +41,9 @@ require_once('helperfiles.php');
         getSongBrowseSearchResults();
         ?>
     </tbody>
-</table>
+   
+    <!-- <button type="submit"></button> -->
+<!-- </table> -->
 
     </body>
 </html>
