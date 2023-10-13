@@ -187,31 +187,6 @@ if (isset($_SESSION['popular_artists'])) {
 } else {
     echo "No results found.";
 }
-
-
-
-// Start the session to access the session variable
-session_start();
-
-if (isset($_SESSION['one_hit_wonders'])) {
-    $oneHitWonders = $_SESSION['one_hit_wonders'];
-    echo "<!DOCTYPE html>
-    <html>
-    <head>
-        <title>One Hit Wonders Songs</title>
-    </head>
-    <body>
-        <h2>One Hit Wonders Songs</h2>
-        <ul>";
-    foreach ($oneHitWonders as $song) {
-        echo "<li>" . $song['title'] . " by " . $song['artist_name'] . " (Popularity: " . $song['popularity'] . ")</li>";
-    }
-    echo "</ul>
-    </body>
-    </html>";
-} else {
-    echo "No results found.";
-}
 ?>
 
        

@@ -28,39 +28,22 @@ require_once('helperfiles.php');
     </nav></header>
        <!-- // <header> <center>header</center></header> -->
         <div class="wrapper">
- <div class="item"><a href="./SingleSong.php">Top Genres</a></div>
- <?php
- getTopGenres();
- ?>
-<div class="item"><a href="./SingleSong.php">Top Artist</a></div>
-<?php
- getTopArtist();
- ?>
-<div class="item"><a href="./SingleSong.php">Most Popular Songs</a></div>
-<?php
-getMostPopularSongs();
-?>
-<div class="item"><a href="./SingleSong.php">One Hit Wonders Songs</a></div>
-<?php
-getOneHitWondersSongs();
-?>
-<div class="item"><a href="./SingleSong.php">Longest Acoustic Songs</a></div>
-<?php
-getLongestAcousticSongs();
-?>
-<div class="item"><a href="./SingleSong.php">At The Club</a></div>
-<?php
-getAtTheClub();
-?>
-<div class="item"><a href="./SingleSong.php">Running Songs</a></div>
-<?php
-getRunningSongs();
-?>
-<div class="item"><a href="./SingleSong.php">Studying</a></div>
-<?php
-getStudyingSongs();
-?>
+    <div class="item"><a href="./SecondPage.php?action=topgenres">Top Genres</a></div>
+
+  <div class="item"><a href="./SecondPage.php">Top Artist</a></div>
   
+    <div class="item"><a href="./SecondPage.php?action=popularsongs">Most Popular Songs</a></div>
+
+    <div class="item"><a href="./SecondPage.php?action=onehitwonders">One Hit Wonders Songs</a></div>
+
+    <div class="item"><a href="./SecondPage.php">Longest Acoustic Songs</a></div>
+
+    <div class="item"><a href="./SecondPage.php">At The Club</a></div>
+
+    <div class="item"><a href="./SecondPage.php">Running Songs</a></div>
+
+    <div class="item"><a href="./SecondPage.php?action=studying">Studying</a></div>
+
 </div>
     <footer>WRITE A DESCRIPTION ABOUT THE ASSINGMENT OUR NAMES AND THE GIT LINK</footer>
     </body>

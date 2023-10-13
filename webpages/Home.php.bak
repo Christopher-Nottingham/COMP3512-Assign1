@@ -28,15 +28,22 @@ require_once('helperfiles.php');
     </nav></header>
        <!-- // <header> <center>header</center></header> -->
         <div class="wrapper">
-  <div class="item"> Top Genres </div>
-  <div class="item"> Top Artist </div>
-  <div class="item"> Most Popular Songs </div>
-  <div class="item"> One Hit Wonders </div>
-  <div class="item"> Longest Acoustic Songs </div>
-  <div class="item"> At The Club </div>
-  <div class="item"> Running Songs </div>
-  <div class="item"> Studying </div>
+    <div class="item"><a href="./SecondPage.php?action=topgenres">Top Genres</a></div>
+
+  <div class="item"><a href="./SecondPage.php">Top Artist</a></div>
   
+    <div class="item"><a href="./SecondPage.php?action=popularsongs">Most Popular Songs</a></div>
+
+<div class="item"><a href="./SingleSong.php">One Hit Wonders Songs</a></div>
+
+    <div class="item"><a href="./SecondPage.php">Longest Acoustic Songs</a></div>
+
+    <div class="item"><a href="./SecondPage.php">At The Club</a></div>
+
+    <div class="item"><a href="./SecondPage.php">Running Songs</a></div>
+
+    <div class="item"><a href="./SecondPage.php?action=studying">Studying</a></div>
+
 </div>
     <footer>WRITE A DESCRIPTION ABOUT THE ASSINGMENT OUR NAMES AND THE GIT LINK</footer>
     </body>
