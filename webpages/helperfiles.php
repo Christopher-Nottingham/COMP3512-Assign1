@@ -1,7 +1,6 @@
 <?php
 require_once("config.inc.php");
-
-
+session_start();
 
 function getArtist()
 {
@@ -19,7 +18,7 @@ function getArtist()
     
 }
 
-function getGenere()
+function getGenre()
 {
     try {
         $pdo = new PDO(DBCONNSTRING, DBUSER, DBPASS);
@@ -49,23 +48,74 @@ function getSongs()
     
 }
 function getSongBrowseSearchResults(){
-        //  if(!isset($_GET['ShowAll'], $_GET['title'], $_GET['genere'], $_GET['artistName'] )){
-        //         $songs = getAllSongInfo();
-        //         foreach ($songs as $row){
-        //                 echo "<tr>";
-        //                 echo "<td>".$row['title']."</td>";
-        //                 echo "<td>".$row['artist_name']."</td>";
-        //                 echo "<td>".$row['year']."</td>";
-        //                 echo "<td>".$row['genre_name']."</td>";
-        //                 echo "<td>".$row['popularity']."</td>";
-        //                 echo "<td></td>";
-        //                 echo "<td><a href='SingleSong.php?song_id=".$row['song_id']."'>Click Me</a></td>";
-        //                 echo "</tr>";
-        //         }
-        //  } else if (isset($_GET['title'])){
-        //         // $song 
-        //  }
-}
+        if (!empty($_GET['title'])){
+                $song = getAllSongsLike($_GET['title']);
+                foreach ($song as $row){
+                    echo "<tr>";
+                    echo "<td>".$row['title']."</td>";
+                    echo "<td>".$row['artist_name']."</td>";
+                    echo "<td>".$row['year']."</td>";
+                    echo "<td>".$row['genre_name']."</td>";
+                    echo "<td>".$row['popularity']."</td>";
+                    echo "<td><a href='addToFavorites.php?id=".$row['song_id']."'>Favorite Me</a></td>";
+                    echo "<td><a href='SingleSong.php?song_id=".$row['song_id']."'>Click Me</a></td>";
+                    echo "</tr>";
+                }
+         } elseif (!empty($_GET['artist'])){
+            $listofartist = getAllSongsFromArtist($_GET['artist']);
+            foreach ($listofartist as $row){
+            echo "<tr>";
+            echo "<td>".$row['title']."</td>";
+            echo "<td>".$row['artist_name']."</td>";
+            echo "<td>".$row['year']."</td>";
+            echo "<td>".$row['genre_name']."</td>";
+            echo "<td>".$row['popularity']."</td>";
+            echo "<td><a href='addToFavorites.php?id=".$row['song_id']."'>Favorite Me</a></td>";
+            echo "<td><a href='SingleSong.php?song_id=".$row['song_id']."'>Click Me</a></td>";
+            echo "</tr>";
+            } 
+        } elseif (!empty($_GET['year_less'])){
+                $year = getAllSongsFromYearsLessThan($_GET['year_less']);
+                foreach ($year as $row){
+                echo "<tr>";
+                echo "<td>".$row['title']."</td>";
+                echo "<td>".$row['artist_name']."</td>";
+                echo "<td>".$row['year']."</td>";
+                echo "<td>".$row['genre_name']."</td>";
+                echo "<td>".$row['popularity']."</td>";
+                echo "<td><a href='addToFavorites.php?id=".$row['song_id']."'>Favorite Me</a></td>";
+                echo "<td><a href='SingleSong.php?song_id=".$row['song_id']."'>Click Me</a></td>";
+                echo "</tr>";
+                } 
+            }
+            elseif (!empty($_GET['year_greater'])){
+                $year = getAllSongsFromYearsGreaterThan($_GET['year_greater']);
+                foreach ($year as $row){
+                echo "<tr>";
+                echo "<td>".$row['title']."</td>";
+                echo "<td>".$row['artist_name']."</td>";
+                echo "<td>".$row['year']."</td>";
+                echo "<td>".$row['genre_name']."</td>";
+                echo "<td>".$row['popularity']."</td>";
+                echo "<td><a href='addToFavorites.php?id=".$row['song_id']."'>Favorite Me</a></td>";
+                echo "<td><a href='SingleSong.php?song_id=".$row['song_id']."'>Click Me</a></td>";
+                echo "</tr>";
+                } 
+            } else{
+                $songs = getAllSongInfo();
+            foreach ($songs as $row){
+                    echo "<tr>";
+                    echo "<td>".$row['title']."</td>";
+                    echo "<td>".$row['artist_name']."</td>";
+                    echo "<td>".$row['year']."</td>";
+                    echo "<td>".$row['genre_name']."</td>";
+                    echo "<td>".$row['popularity']."</td>";
+                    echo "<td><a href='addToFavorites.php?id=".$row['song_id']."'>Favorite Me</a></td>";
+                    echo "<td><a href='SingleSong.php?song_id=".$row['song_id']."'>Click Me</a></td>";
+                    echo "</tr>";
+            } 
+        }
+    }        
 
 function getArtist_From_Song_ID($songid)
 {
@@ -168,16 +218,13 @@ function getAllSongsFromArtist($artist){
 
 
 
-function getAllSongInfo()
+function getAllSongInfo() 
 {
 
-
-// $sql = "SELECT * FROM songs where song_id = ?";
-// $stmt = $db->prepare($sql);
-// $stmt->bindValue(1, $songid);
-// $stmt->execute();
-// return $stmt;
     try {
+
+
+
         $pdo = new PDO(DBCONNSTRING, DBUSER, DBPASS);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql    = "SELECT song_id ,title, year ,artist_name , a.artist_id, g.genre_name, s.genre_id, duration, bpm,  energy, danceability, liveness, valence, acousticness, speechiness, popularity
@@ -185,7 +232,7 @@ function getAllSongInfo()
         WHERE a.artist_id = s.artist_id AND s.genre_id = g.genre_id AND t.type_id = a.artist_type_id";
  $result = $pdo->query($sql);
  return $ASData = $result->fetchAll(PDO::FETCH_ASSOC);
-//  $pdo = null;
+
     }
     catch (PDOException $e) {
         die($e->getMessage());
