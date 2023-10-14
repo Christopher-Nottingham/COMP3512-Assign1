@@ -39,7 +39,7 @@ require_once('helperfiles.php');
         <li> Obayda Daoud <a href="https://github.com/ObaydaD">Github</a></li>
     </ul>
 
-    The project repository can be found here <a href="http://"></a>
+    The project repository can be found here: <a id="altText" href="https://github.com/Christopher-Nottingham/COMP3512-Assign1">Assignment</a>
         </div>
 <?php printFooter();?>
     </body>

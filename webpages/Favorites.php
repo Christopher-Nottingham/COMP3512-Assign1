@@ -1,4 +1,5 @@
 <?php
+
 // Start the session to access the favorites list
 session_start();
 
@@ -25,7 +26,7 @@ if (isset($_GET['clear'])) {
 function getSongDetails($songId) {
     // Database connection double checknot conected  
 	
-    $db = new mysqli("hostname", "username", "password", "database_name");
+    $db = new mysqli("localhost", "root", "", DBCONNSTRING);
 
     if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
@@ -136,7 +137,8 @@ if (isset($_GET['remove'])) {
                 echo "<td>" . $songDetails['year'] . "</td>";
                 echo "<td>" . $songDetails['genre_name'] . "</td>";
                 echo "<td>" . $songDetails['popularity'] . "</td>";
-                echo "<td><a href='ViewFavoritesPage.php?remove=$songId'>Remove</a></td>";
+                echo "<td><a href='SingleSong.php?song_id=".$songId."'>Remove</a></td>";
+                echo "<td><a href='ViewFavoritesPage.php?remove=".$songId."'>Remove</a></td>";
                 echo "</tr>";
             }
             ?>

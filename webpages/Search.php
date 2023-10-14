@@ -45,7 +45,7 @@ require_once "helperfiles.php";
                     "</option>";
             }
             ?>  </select>
-        <input type="radio" id = "genre" name="search_type" value="Genre">Genre</input>
+        <input type="radio" id = "genre" name="search_type" value="genre">Genre</input>
        <select name="genre" >
         <option value="">Select an Option</option>
        <?php
@@ -76,11 +76,6 @@ require_once "helperfiles.php";
 
 <input type="reset" value="Clear">
 
-    <!-- <input type="radio" value="title">
-        <input type="text" name="title" id="title">
-        <input type="text" name="artist" id="artist" >
-        <input type="text" name="genere"> -->
-        <!-- <input type="search" name="search" id="search"> -->
         
 
         <fieldset>

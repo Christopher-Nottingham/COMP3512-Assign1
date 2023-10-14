@@ -12,6 +12,20 @@ require_once('helperfiles.php');
 <body>
 <h1>Database Tester (PDO)</h1>
 <?php
+
+// 
+// echo "hi";
+// print_r($_SESSION);
+
+$smth = getTopArtist();
+print_r($smth);
+// echo "hi";
+// getTopArtist();
+
+// print_r($_SESSION);
+
+
+// var_dump(function_exists('mysqli_connect'));
 // session_start();
 // $data1 = getArtist();
 // $data2 = getGenere();

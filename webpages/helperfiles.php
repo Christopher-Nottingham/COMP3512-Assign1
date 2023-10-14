@@ -1,5 +1,5 @@
 <?php
-require_once("config.inc.php");
+include_once "config.inc.php";
 session_start();
 
 function getArtist()
@@ -269,14 +269,12 @@ function getAllSongInfo()
 
 
 
-// Top Generes
+// // Top Generes
 
 function getTopGenres() {
     // Database connection
-    $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
-    if ($db->connect_error) {
-        die("Connection failed: " . $db->connect_error);
-    }
+    $pdo = new PDO(DBCONNSTRING, DBUSER, DBPASS);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // SQL query to get top genres
     $sql = "SELECT genres.genre_name, COUNT(songs.song_id) AS song_count
@@ -288,85 +286,60 @@ function getTopGenres() {
 
     $result = $db->query($sql);
 
-    if ($result->num_rows > 0) {
-        $genres = array();
-        while ($row = $result->fetch_assoc()) {
-            $genres[] = $row;
+    
+        $genres = $result->fetchAll(PDO::FETCH_ASSOC);
+
+        if (empty($genres)){
+            return "No results found, database error!";
+        } else {
+         return $genres;
         }
-
-        // Store the results in a session variable
-        session_start();
-        $_SESSION['top_genres'] = $genres;
-
-        $db->close();
-    } else {
-        echo "No results found.";
-    }
-}
-
-// Check if the "Top Genres" link was clicked
-if (isset($_GET['action']) && $_GET['action'] === 'topgenres') {
-    // Call the function when the link is clicked
-    getTopGenres();
-    header("Location: SingleSong.php"); // Redirect to SingleSong page 
+        $pdo = null;
+         
+         
+      
 }
 
 
 
-// top Artist
 
-// Function to get the top artist
+// // top Artist
+
+// // Function to get the top artist
 function getTopArtist() {
     // Database connection
-    $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
-
-    if ($db->connect_error) {
-        die("Connection failed: " . $db->connect_error);
-    }
-
-    // SQL query to get top artists
+    $pdo = new PDO(DBCONNSTRING, DBUSER, DBPASS);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "SELECT artists.artist_id, artists.artist_name, COUNT(songs.artist_id) AS song_count
-            FROM songs
-            INNER JOIN artists ON songs.artist_id = artists.artist_id
-            GROUP BY artists.artist_id, artists.artist_name
-            ORDER BY song_count DESC";
+    FROM songs
+    INNER JOIN artists ON songs.artist_id = artists.artist_id
+    GROUP BY artists.artist_id, artists.artist_name
+    ORDER BY song_count DESC";
+    $result = $pdo->query($sql);
+  $artistData = $result->fetchAll(PDO::FETCH_ASSOC);
 
-    $result = $db->query($sql);
 
-    if ($result->num_rows > 0) {
-        $artists = array();
-        while ($row = $result->fetch_assoc()) {
-            $artists[] = $row;
-        }
 
-        // Store the results in a session variable
-        session_start();
-        $_SESSION['top_artists'] = $artists;
-
-        $db->close();
-    } else {
-        echo "No results found.";
-    }
-}
-
-// Check if the "Top Artist" link was clicked
-if (isset($_GET['action']) && $_GET['action'] === 'topartist') {
-    // Call the function when the link is clicked
-    getTopArtist();
-    header("Location: SingleSong.php"); // Redirect to the SingleSong
+   if(empty($artistData)){
+    return "No results found, database error!";
+   } else {
+    return $artistData;
+   }
+   $pdo = null;
+    
+    
+   
 }
 
 
-// Most popular songs 
+
+// // Most popular songs 
 
 
 function getMostPopularSongs() {
     // Database connection
-    $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
-    if ($db->connect_error) {
-        die("Connection failed: " . $db->connect_error);
-    }
-
+    $pdo = new PDO(DBCONNSTRING, DBUSER, DBPASS);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // SQL query to get the most popular songs
     $sql = "SELECT artists.artist_name, COUNT(songs.song_id) AS song_count
             FROM artists
@@ -374,40 +347,31 @@ function getMostPopularSongs() {
             GROUP BY artists.artist_name
             ORDER BY song_count DESC";
 
-    $result = $db->query($sql);
 
-    if ($result->num_rows > 0) {
-        $popularArtists = array();
-        while ($row = $result->fetch_assoc()) {
-            $popularArtists[] = $row;
-        }
 
-        // Store the results in a session variable
-        session_start();
-        $_SESSION['popular_artists'] = $popularArtists;
+    $result = $pdo->query($sql);
+  $popularSongData = $result->fetchAll(PDO::FETCH_ASSOC);
 
-        $db->close();
-    } else {
-        echo "No results found.";
-    }
-}
 
-// Check if the "Most Popular Songs" link was clicked
-if (isset($_GET['action']) && $_GET['action'] === 'popularsongs') {
-    // Call the function when the link is clicked
-    getMostPopularSongs();
-    header("Location: SingleSong.php"); // Redirect to SingleSong page 
+
+   if(empty($popularSongData)){
+    return "No results found, database error!";
+   } else {
+    return $popularSongData;
+   }
+   $pdo = null;
+
+   
 }
 
 
-//ONE hit wonders
+
+// //ONE hit wonders
 
 function getOneHitWondersSongs() {
     // Database connection
-    $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
-    if ($db->connect_error) {
-        die("Connection failed: " . $db->connect_error);
-    }
+    $pdo = new PDO(DBCONNSTRING, DBUSER, DBPASS);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // SQL query to get one-hit wonders songs
     $sql = "SELECT songs.title, artists.artist_name, songs.popularity
@@ -423,39 +387,26 @@ function getOneHitWondersSongs() {
 
     $result = $db->query($sql);
 
-    if ($result->num_rows > 0) {
-        $oneHitWonders = array();
-        while ($row = $result->fetch_assoc()) {
-            $oneHitWonders[] = $row;
+    
+        $oneHitWonders = $result->fetchAll(PDO::FETCH_ASSOC);
+
+        if(empty($oneHitWonders)){
+            return "No results found, database error!";
+        } else {
+         return $oneHitWonders;
         }
+        $pdo = null;
 
-        // Store the results in a session variable
-        session_start();
-        $_SESSION['one_hit_wonders'] = $oneHitWonders;
-
-        $db->close();
-    } else {
-        echo "No results found.";
-    }
-}
-
-// Check if the "One Hit Wonders Songs" link was clicked
-if (isset($_GET['action']) && $_GET['action'] === 'onehitwonders') {
-    // Call the function when the link is clicked
-    getOneHitWondersSongs();
-    header("Location: SingleSong.php"); // Redirect to SingleSong page 
 }
 
 
 
-// Longest Acoustic Song
 
-function getLongestAcousticSongs() {
-    // Database connection
-    $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
-    if ($db->connect_error) {
-        die("Connection failed: " . $db->connect_error);
-    }
+// // Longest Acoustic Song
+
+ function getLongestAcousticSongs() {
+    $pdo = new PDO(DBCONNSTRING, DBUSER, DBPASS);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // SQL query to get longest acoustic songs
     $sql = "SELECT title FROM songs
@@ -464,122 +415,88 @@ function getLongestAcousticSongs() {
 
     $result = $db->query($sql);
 
-    if ($result->num_rows > 0) {
-        $songs = array();
-        while ($row = $result->fetch_assoc()) {
-            $songs[] = $row;
+
+        $songs = $result->fetchAll(PDO::FETCH_ASSOC);
+        
+        if (empty($songs)){
+            return "No results found, database error!";
+        } else {
+         return $songs;
         }
+        $pdo = null;
 
-        // Store the results in a session variable
-        session_start();
-        $_SESSION['longest_acoustic_songs'] = $songs;
 
-        $db->close();
-    } else {
-        echo "No results found.";
-    }
-}
-
-// Check if the "Longest Acoustic Songs" link was clicked
-if (isset($_GET['action']) && $_GET['action'] === 'longestacoustic') {
-    // Call the function when the link is clicked
-    getLongestAcousticSongs();
-    header("Location: SingleSong.php"); // Redirect to the SingleSong
 }
 
 
 
 
-// At the club
+
+
+// // At the club
 
 function getAtTheClubSongs() {
     // Database connection
-    $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
-    if ($db->connect_error) {
-        die("Connection failed: " . $db->connect_error);
-    }
+    $pdo = new PDO(DBCONNSTRING, DBUSER, DBPASS);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // SQL query to get songs for "At The Club"
     $sql = "SELECT title FROM songs
             WHERE danceability > 85
             ORDER BY ABS(danceability*1.6+energy*1.4) DESC";
 
-    $result = $db->query($sql);
+$result = $db->query($sql);
 
-    if ($result->num_rows > 0) {
-        $songs = array();
-        while ($row = $result->fetch_assoc()) {
-            $songs[] = $row;
-        }
 
-        // Store the results in a session variable
-        session_start();
-        $_SESSION['at_the_club_songs'] = $songs;
+$songs = $result->fetchAll(PDO::FETCH_ASSOC);
 
-        $db->close();
-    } else {
-        echo "No results found.";
-    }
+if (empty($songs)){
+    return "No results found, database error!";
+} else {
+ return $songs;
 }
+$pdo = null;
 
-// Check if the "At The Club" link was clicked
-if (isset($_GET['action']) && $_GET['action'] === 'attheclub') {
-    // Call the function when the link is clicked
-    getAtTheClubSongs();
-    header("Location: SingleSong.php"); // Redirect to the SingleSong
+
 }
 
 
 
-// Running
 
-function getRunningSongs() {
-    // Database connection
-    $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
-    if ($db->connect_error) {
-        die("Connection failed: " . $db->connect_error);
-    }
 
+// // Running
+
+ function getRunningSongs() {
+    $pdo = new PDO(DBCONNSTRING, DBUSER, DBPASS);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // SQL query to get running songs
     $sql = "SELECT title FROM songs
             WHERE bpm BETWEEN 120 AND 125
             ORDER BY ABS(energy * 1.3 + valence * 1.6) DESC";
 
-    $result = $db->query($sql);
+$result = $db->query($sql);
+$songs = $result->fetchAll(PDO::FETCH_ASSOC);
 
-    if ($result->num_rows > 0) {
-        $songs = array();
-        while ($row = $result->fetch_assoc()) {
-            $songs[] = $row;
-        }
-
-        // Store the results in a session variable
-        session_start();
-        $_SESSION['running_songs'] = $songs;
-
-        $db->close();
-    } else {
-        echo "No results found.";
+if (empty($songs)){
+    return "No results found, database error!";
+} else {
+ return $songs;
+}
+$pdo = null;
+  
     }
-}
-
-// Check if the "Running Songs" link was clicked
-if (isset($_GET['action']) && $_GET['action'] === 'runningsongs') {
-    // Call the function when the link is clicked
-    getRunningSongs();
-    header("Location: SingleSong.php"); // Redirect to the SingleSong
-}
 
 
 
-// Studyung
+
+
+
+ // Studying
 
 function getStudyingSongs() {
     // Database connection
-    $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
-    if ($db->connect_error) {
-        die("Connection failed: " . $db->connect_error);
-    }
+    $pdo = new PDO(DBCONNSTRING, DBUSER, DBPASS);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // SQL query to get studying songs
     $sql = "SELECT title FROM songs
@@ -589,26 +506,14 @@ function getStudyingSongs() {
 
     $result = $db->query($sql);
 
-    if ($result->num_rows > 0) {
-        $songs = array();
-        while ($row = $result->fetch_assoc()) {
-            $songs[] = $row;
-        }
+    $songs = $result->fetchAll(PDO::FETCH_ASSOC);
 
-        // Store the results in a session variable
-        session_start();
-        $_SESSION['studying_songs'] = $songs;
-
-        $db->close();
+    if (empty($songs)){
+        return "No results found, database error!";
     } else {
-        echo "No results found.";
+     return $songs;
     }
+    $pdo = null;
 }
 
-// Check if the "Studying" link was clicked
-if (isset($_GET['action']) && $_GET['action'] === 'studying') {
-    // Call the function when the link is clicked
-    getStudyingSongs();
-    header("Location: SingleSong.php"); // Redirect to SingleSong page 
-}
 ?>
