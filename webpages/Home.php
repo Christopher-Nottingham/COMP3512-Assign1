@@ -27,19 +27,19 @@ require_once('helperfiles.php');
     </nav></div>
      
         <div class="wrapper">
-    <div class="item" ><a  id="altText" href="./SecondPage.php?action=topgenres">Top Genres</a></div>
+    <div class="item" ><a  id="Top Genres" href="./SecondPage.php?action=topgenres">Top Genres</a></div>
 
-  <div class="item"><a id="altText"  href="./SecondPage.php">Top Artist</a></div>
+    <div class="item"><a id="Top Artist" href="./SecondPage.php?action=topartist">Top Artist</a></div>
   
-    <div class="item"><a  id="altText" href="./SecondPage.php?action=popularsongs">Most Popular Songs</a></div>
+    <div class="item"><a  id="Most Popular Songs" href="./SecondPage.php?action=popularsongs">Most Popular Songs</a></div>
 
-    <div class="item"><a id="altText"  href="./SecondPage.php?action=onehitwonders">One Hit Wonders Songs</a></div>
+    <div class="item"><a id="One Hit Wonders Songs"  href="./SecondPage.php?action=onehitwonders">One Hit Wonders Songs</a></div>
 
-    <div class="item"><a id="altText"  href="./SecondPage.php">Longest Acoustic Songs</a></div>
+<div class="item"><a id="LongestAcousticSongsLink" href="./SecondPage.php?action=longestacoustic">Longest Acoustic Songs</a></div>
 
-    <div class="item"><a id="altText"  href="./SecondPage.php">At The Club</a></div>
+<div class="item"><a id="AtTheClubLink" href="./SecondPage.php?action=attheclub">At The Club</a></div>
 
-    <div class="item"><a id="altText"  href="./SecondPage.php">Running Songs</a></div>
+<div class="item"><a id="RunningSongsLink" href="./SecondPage.php?action=runningsongs">Running Songs</a></div>
 
     <div class="item"><a id="altText" href="./SecondPage.php?action=studying">Studying</a></div>
 

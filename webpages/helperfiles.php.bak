@@ -257,23 +257,12 @@ function getAllSongInfo()
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 // Top Generes
 <?php
 function getTopGenres() {
     // Database connection
-    $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
+    $db = new mysqli("hostname", "username", "password", "database_name");
+
     if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
     }
@@ -312,13 +301,11 @@ if (isset($_GET['action']) && $_GET['action'] === 'topgenres') {
 }
 ?>
 
-
-// top Artist
+// Top Artist
 <?php
-// Function to get the top artist
 function getTopArtist() {
     // Database connection
-    $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
+    $db = new mysqli("hostname", "username", "password", "database_name");
 
     if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
@@ -349,12 +336,8 @@ function getTopArtist() {
     }
 }
 
-// Check if the "Top Artist" link was clicked
-if (isset($_GET['action']) && $_GET['action'] === 'topartist') {
-    // Call the function when the link is clicked
-    getTopArtist();
-    header("Location: SingleSong.php"); // Redirect to the SingleSong
-}
+// Call the function when this page is loaded
+getTopArtist();
 ?>
 
 // Most popular songs 
@@ -362,7 +345,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'topartist') {
 <?php
 function getMostPopularSongs() {
     // Database connection
-    $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
+    $db = new mysqli("hostname", "username", "password", "database_name");
+
     if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
     }
@@ -404,7 +388,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'popularsongs') {
 <?php
 function getOneHitWondersSongs() {
     // Database connection
-    $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
+    $db = new mysqli("hostname", "username", "password", "database_name");
+
     if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
     }
@@ -452,7 +437,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'onehitwonders') {
 <?php
 function getLongestAcousticSongs() {
     // Database connection
-    $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
+    $db = new mysqli("hostname", "username", "password", "database_name");
+
     if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
     }
@@ -480,21 +466,17 @@ function getLongestAcousticSongs() {
     }
 }
 
-// Check if the "Longest Acoustic Songs" link was clicked
-if (isset($_GET['action']) && $_GET['action'] === 'longestacoustic') {
-    // Call the function when the link is clicked
-    getLongestAcousticSongs();
-    header("Location: SingleSong.php"); // Redirect to the SingleSong
-}
+// Call the function when this page is loaded
+getLongestAcousticSongs();
 ?>
-
 
 
 // At the club
 <?php
 function getAtTheClubSongs() {
     // Database connection
-    $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
+    $db = new mysqli("hostname", "username", "password", "database_name");
+
     if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
     }
@@ -522,20 +504,16 @@ function getAtTheClubSongs() {
     }
 }
 
-// Check if the "At The Club" link was clicked
-if (isset($_GET['action']) && $_GET['action'] === 'attheclub') {
-    // Call the function when the link is clicked
-    getAtTheClubSongs();
-    header("Location: SingleSong.php"); // Redirect to the SingleSong
-}
+// Call the function when this page is loaded
+getAtTheClubSongs();
 ?>
-
 
 // Running
 <?php
 function getRunningSongs() {
     // Database connection
-    $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
+    $db = new mysqli("hostname", "username", "password", "database_name");
+
     if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
     }
@@ -563,12 +541,10 @@ function getRunningSongs() {
     }
 }
 
-// Check if the "Running Songs" link was clicked
-if (isset($_GET['action']) && $_GET['action'] === 'runningsongs') {
-    // Call the function when the link is clicked
-    getRunningSongs();
-    header("Location: SingleSong.php"); // Redirect to the SingleSong
-}
+// Call the function when this page is loaded 
+//move to  main page with an if statment cheking 
+//that the buton was preced to call the function 
+getRunningSongs();
 ?>
 
 
@@ -576,7 +552,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'runningsongs') {
 <?php
 function getStudyingSongs() {
     // Database connection
-    $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
+    $db = new mysqli("hostname", "username", "password", "database_name");
+
     if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
     }
