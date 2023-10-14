@@ -270,7 +270,7 @@ function getAllSongInfo()
 
 
 // Top Generes
-<?php
+
 function getTopGenres() {
     // Database connection
     $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
@@ -310,11 +310,11 @@ if (isset($_GET['action']) && $_GET['action'] === 'topgenres') {
     getTopGenres();
     header("Location: SingleSong.php"); // Redirect to SingleSong page 
 }
-?>
+
 
 
 // top Artist
-<?php
+
 // Function to get the top artist
 function getTopArtist() {
     // Database connection
@@ -355,11 +355,11 @@ if (isset($_GET['action']) && $_GET['action'] === 'topartist') {
     getTopArtist();
     header("Location: SingleSong.php"); // Redirect to the SingleSong
 }
-?>
+
 
 // Most popular songs 
 
-<?php
+
 function getMostPopularSongs() {
     // Database connection
     $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
@@ -398,10 +398,10 @@ if (isset($_GET['action']) && $_GET['action'] === 'popularsongs') {
     getMostPopularSongs();
     header("Location: SingleSong.php"); // Redirect to SingleSong page 
 }
-?>
+
 
 //ONE hit wonders
-<?php
+
 function getOneHitWondersSongs() {
     // Database connection
     $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
@@ -445,11 +445,11 @@ if (isset($_GET['action']) && $_GET['action'] === 'onehitwonders') {
     getOneHitWondersSongs();
     header("Location: SingleSong.php"); // Redirect to SingleSong page 
 }
-?>
+
 
 
 // Longest Acoustic Song
-<?php
+
 function getLongestAcousticSongs() {
     // Database connection
     $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
@@ -486,12 +486,12 @@ if (isset($_GET['action']) && $_GET['action'] === 'longestacoustic') {
     getLongestAcousticSongs();
     header("Location: SingleSong.php"); // Redirect to the SingleSong
 }
-?>
+
 
 
 
 // At the club
-<?php
+
 function getAtTheClubSongs() {
     // Database connection
     $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
@@ -528,11 +528,11 @@ if (isset($_GET['action']) && $_GET['action'] === 'attheclub') {
     getAtTheClubSongs();
     header("Location: SingleSong.php"); // Redirect to the SingleSong
 }
-?>
+
 
 
 // Running
-<?php
+
 function getRunningSongs() {
     // Database connection
     $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");
@@ -569,11 +569,11 @@ if (isset($_GET['action']) && $_GET['action'] === 'runningsongs') {
     getRunningSongs();
     header("Location: SingleSong.php"); // Redirect to the SingleSong
 }
-?>
+
 
 
 // Studyung
-<?php
+
 function getStudyingSongs() {
     // Database connection
     $db = new mysqli("localhost", "root", "", "sqlite:../databases/music.db");

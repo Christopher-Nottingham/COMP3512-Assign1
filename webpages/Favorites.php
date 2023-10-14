@@ -23,19 +23,64 @@ if (isset($_GET['clear'])) {
 
 // Function to retrieve song details based on song_id from the database
 function getSongDetails($songId) {
-    // Replace this with your database query to fetch song details
-    // Example: SELECT title, artist_name, year, genre_name, popularity FROM songs WHERE song_id = $songId
-    // Execute the query and return the song details
-    // You'll need to connect to your database and execute the query here
-    // For brevity, I'll simulate song details with an array
-    $songDetails = array(
-        'title' => 'Sample Song Title',
-        'artist_name' => 'Sample Artist Name',
-        'year' => 2023,
-        'genre_name' => 'Sample Genre',
-        'popularity' => 80,
-    );
-    return $songDetails;
+    // Database connection double checknot conected  
+	
+    $db = new mysqli("hostname", "username", "password", "database_name");
+
+    if ($db->connect_error) {
+        die("Connection failed: " . $db->connect_error);
+    }
+
+    // SQL query to fetch song details
+    $sql = "SELECT title, artist_name, year, genre_name, popularity FROM songs WHERE song_id = ?";
+
+    // Prepare the SQL statement
+    $stmt = $db->prepare($sql);
+    
+    if ($stmt) {
+        // Bind the parameter
+        $stmt->bind_param("i", $songId);
+
+        // Execute the query
+        $stmt->execute();
+
+        // Get the result
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 1) {
+            $songDetails = $result->fetch_assoc();
+
+            // Close the prepared statement and the database connection
+            $stmt->close();
+            $db->close();
+
+            return $songDetails;
+        } else {
+            // No results found
+            $stmt->close();
+            $db->close();
+            return null;
+        }
+    } else {
+        // Error in preparing the statement
+        $db->close();
+        return null;
+    }
+}
+
+// Example usage:
+$songId = 1; // Replace with the desired song ID
+$songDetails = getSongDetails($songId);
+
+if ($songDetails) {
+    // Output the song details
+    echo "Title: " . $songDetails['title'] . "<br>";
+    echo "Artist: " . $songDetails['artist_name'] . "<br>";
+    echo "Year: " . $songDetails['year'] . "<br>";
+    echo "Genre: " . $songDetails['genre_name'] . "<br>";
+    echo "Popularity: " . $songDetails['popularity'] . "<br>";
+} else {
+    echo "Song not found.";
 }
 
 // Check if a song should be removed from favorites
@@ -55,12 +100,12 @@ if (isset($_GET['remove'])) {
     <title>View Favorites</title>
 </head>
 <body>
-<div class="header"><nav class="navigation">
-        <a id="white" href="./Home.php">Home</a>
-        <a id="white" href="./SingleSong.php">Single Song</a>
-        <a id="white" href="./Favorites.php">Favorites</a>    
-        <a id="white" href="./Browse-Search-Results.php">Browse/Search Results</a>
-    <a id="white" href="./Search.php">Search</a>    
+ <div class="header"><nav class="navigation">
+        <a id="white" href="./Home.php">Home</a>&nbsp;
+        <a id="white" href="./SingleSong.php">Single Song</a>&nbsp;
+        <a id="white" href="./Favorites.php">Favorites</a>    &nbsp;
+        <a id="white" href="./Browse-Search-Results.php">Browse/Search Results</a>&nbsp;
+    <a id="white" href="./Search.php">Search</a>    &nbsp;
     <a  id="white" href="./aboutus.php">About Us</a>
     </nav></div>
 
