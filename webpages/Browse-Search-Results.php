@@ -9,9 +9,10 @@ require_once('helperfiles.php');
     </head>
 
     <body>
-    <header>  <div class="header"><nav class="navigation">
+    
+    <header>
+     <div class="header"><nav class="navigation">
         <a id="white" href="./Home.php">Home</a>&nbsp;
-        <a id="white" href="./SingleSong.php">Single Song</a>&nbsp;
         <a id="white" href="./Favorites.php">Favorites</a>    &nbsp;
         <a id="white" href="./Browse-Search-Results.php">Browse/Search Results</a>&nbsp;
     <a id="white" href="./Search.php">Search</a>    &nbsp;

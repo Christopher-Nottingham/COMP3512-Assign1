@@ -1,6 +1,6 @@
 <?php 
-require_once('config.inc.php');
-require_once('helperfiles.php');
+include_once('config.inc.php');
+include_once('helperfiles.php');
 
 ?>
 
@@ -14,7 +14,6 @@ require_once('helperfiles.php');
    <header>
      <div class="header"><nav class="navigation">
         <a id="white" href="./Home.php">Home</a>&nbsp;
-        <a id="white" href="./SingleSong.php">Single Song</a>&nbsp;
         <a id="white" href="./Favorites.php">Favorites</a>    &nbsp;
         <a id="white" href="./Browse-Search-Results.php">Browse/Search Results</a>&nbsp;
     <a id="white" href="./Search.php">Search</a>    &nbsp;
@@ -30,26 +29,21 @@ $str = $_SERVER['QUERY_STRING'];
 $newStr = substr($str,7);
 
 
-
-
-
-
-
+// print_r($_SERVER['QUERY_STRING']);
 
 
 if ( $newStr =='topartist') {
-    // print_r(getTopArtist());
+
     $artists = getTopArtist();
-    print_r($artists);
-    echo "<h2>Top Artists</h2>";
+
+    echo "<h2 id = 'text'>Top Artists</h2>";
     echo "<table>";
-    echo "<tr><th>Artist ID</th><th>Artist Name</th><th>Song Count</th></tr>";
+    echo "<tr><th id = 'text'>Artist ID</th><th id = 'text'>Artist Name</th><th id = 'text'>Song Count</th></tr>";
     foreach ($artists as $artist) {
-        echo "<tr><td>" . $artist['artist_id'] . "</td><td>" . $artist['artist_name'] . "</td><td>" . $artist['song_count'] . "</td></tr>";
+        echo "<tr><td id = 'text'>" . $artist['artist_id'] . "</td><td id = 'text'>" . $artist['artist_name'] . "</td><td id = 'text'>" . $artist['song_count'] . "</td></tr>";
     }
     echo "</table>";
 } elseif ($newStr =='longestacoustic') {
-
     $songs = getLongestAcousticSongs();
     echo "<h2>Longest Acoustic Songs</h2>";
     echo "<ul>";
@@ -57,15 +51,16 @@ if ( $newStr =='topartist') {
         echo "<li>" . $song['title'] . "</li>";
     }
     echo "</ul>";
-} elseif ($newStr == 'attheclub') {
-    $songs = getAtTheClubSongs();
+} elseif ($newStr == 'club'){
     echo "<h2>Songs for 'At The Club'</h2>";
     echo "<ul>";
-    foreach ($songs as $song) {
-        echo "<li>" . $song['title'] . "</li>";
+   
+    $songs = getAtTheClubSongs();
+    foreach ($songs as $song){
+        echo "<li>".$song['title']."</li>";
     }
     echo "</ul>";
-} 
+}
 elseif ($newStr == 'runningsongs') {
     $songs = getRunningSongs();
     echo "<h2>Running Songs</h2>";
@@ -83,8 +78,7 @@ elseif ($newStr == 'studying') {
     foreach ($songs as $song) {
         echo "<li>" . $song['title'] . "</li>";
     }
-    echo "</ul>
-    ";
+    echo "</ul>";
     
   
 } 
@@ -111,13 +105,12 @@ elseif($newStr == 'popularsongs') {
 }
 elseif ($newStr == 'onehitwonders') {
     $oneHitWonders = $getOneHitWondersSongs();
-    echo "
-        <h2>One Hit Wonders Songs</h2>
-        <ul>";
+    echo "<div class='section'>";
+    echo "<h2>One Hit Wonders Songs</h2><ul>";
     foreach ($oneHitWonders as $song) {
         echo "<li>" . $song['title'] . " by " . $song['artist_name'] . " (Popularity: " . $song['popularity'] . ")</li>";
     }
-    echo "</ul>";
+    echo "</ul></div>";
 
 
 } 
