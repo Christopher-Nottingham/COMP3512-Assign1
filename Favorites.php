@@ -1,6 +1,6 @@
 <?php
-require_once('config.inc.php');
-require_once('helperfiles.php');
+require_once "../includes/config.inc.php";
+require_once "../includes/helperfiles.php";
 // Start the session to access the favorites list
 
 session_start();
@@ -41,11 +41,11 @@ if (isset($_GET['remove'])) {
  
 <header>
      <div class="header"><nav class="navigation">
-        <a id="white" href="./Home.php">Home</a>&nbsp;
-        <a id="white" href="./Favorites.php">Favorites</a>    &nbsp;
-        <a id="white" href="./Browse-Search-Results.php">Browse/Search Results</a>&nbsp;
-    <a id="white" href="./Search.php">Search</a>    &nbsp;
-    <a  id="white" href="./aboutus.php">About Us</a>
+        <a id="white" href="Home.php">Home</a>&nbsp;
+        <a id="white" href="Favorites.php">Favorites</a>    &nbsp;
+        <a id="white" href="Browse-Search-Results.php">Browse/Search Results</a>&nbsp;
+    <a id="white" href="Search.php">Search</a>    &nbsp;
+    <a  id="white" href="aboutus.php">About Us</a>
     </nav></div>
 </header>
 

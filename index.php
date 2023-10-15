@@ -1,10 +1,6 @@
 <?php 
-
-require_once('config.inc.php');
-require_once('helperfiles.php');
-
-
-
+require_once "../includes/config.inc.php";
+require_once "../includes/helperfiles.php";
 ?>
 
 

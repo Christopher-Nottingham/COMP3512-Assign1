@@ -1,5 +1,5 @@
 <?php
-include_once "config.inc.php";
+include_once "../includes/config.inc.php";
 session_start();
 
 function getArtist()

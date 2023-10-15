@@ -1,7 +1,6 @@
 <?php 
-include_once('config.inc.php');
-include_once('helperfiles.php');
-
+require_once "../includes/config.inc.php";
+require_once "../includes/helperfiles.php";
 ?>
 
 <head>

@@ -1,6 +1,6 @@
 <?php
-require_once('config.inc.php');
-require_once('helperfiles.php');
+require_once "../includes/config.inc.php";
+require_once "../includes/helperfiles.php";
 ?>
 <html>
 <head>
@@ -10,12 +10,12 @@ require_once('helperfiles.php');
 </head>
 <body>
 <div class="header"><nav class="navigation">
-  <a id="white" href="./Home.php">Home</a>
-  <a id="white" href="./SingleSong.php">Single Song</a>
-  <a id="white" href="./Favorites.php">Favorites</a>    
-  <a id="white" href="./Browse-Search-Results.php">Browse/Search Results</a>
-<a id="white" href="./Search.php">Search</a>    
-<a  id="white" href="./aboutus.php">About Us</a>
+  <a id="white" href="index.php">Home</a>
+  <a id="white" href="SingleSong.php">Single Song</a>
+  <a id="white" href="Favorites.php">Favorites</a>    
+  <a id="white" href="Browse-Search-Results.php">Browse/Search Results</a>
+<a id="white" href="Search.php">Search</a>    
+<a  id="white" href="aboutus.php">About Us</a>
 </nav></div>
        
 
